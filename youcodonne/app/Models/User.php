@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Notifications\Notification;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -64,19 +63,19 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-
-    public function isRestaurateur(): bool
+    // Helpers
+    public function isAdmin()
     {
-        return $this->hasRole('restaurateur');
+        return $this->type === 'admin';
     }
 
-    public function isClient(): bool
+    public function isRestaurateur()
     {
-        return $this->hasRole('client');
+        return $this->type === 'restaurateur';
     }
 
-    public function isAdmin(): bool
+    public function isClient()
     {
-        return $this->hasRole('admin');
+        return $this->type === 'client';
     }
 }

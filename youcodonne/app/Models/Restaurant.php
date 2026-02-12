@@ -18,9 +18,8 @@ class Restaurant extends Model
         'capacite',
     ];
 
-    protected $dates = ['delete_at'];
+ 
 
-    // Relations
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -55,6 +54,8 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(User::class, 'favoris');
     }
+
+ 
 
     public function scopeParVille($query, $ville)
     {
