@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
-            $table->foreignId('creneau_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('creneau_id')->nullable()->constrained('creneaux')->onDelete('set null');
             $table->date('date');
             $table->timestamps();
         });
