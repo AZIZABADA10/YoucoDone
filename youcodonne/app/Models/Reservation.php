@@ -20,7 +20,7 @@ class Reservation extends Model
         'date' => 'date',
     ];
 
-    // Relations
+
     public function user()
     {
         return $this->belongsTo(User::class);
