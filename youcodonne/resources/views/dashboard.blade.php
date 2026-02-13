@@ -12,7 +12,6 @@
                 $user = Auth::user();
             @endphp
 
-            {{-- ================= CLIENT ================= --}}
             @if($user->isClient())
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -91,7 +90,6 @@
                     @endif
                 </div>
 
-            {{-- ================= RESTAURATEUR ================= --}}
             @elseif($user->isRestaurateur())
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -129,7 +127,6 @@
 
                 </div>
 
-            {{-- ================= ADMIN ================= --}}
             @elseif($user->isAdmin())
 
                 <div class="bg-white shadow-xl sm:rounded-lg p-6">
