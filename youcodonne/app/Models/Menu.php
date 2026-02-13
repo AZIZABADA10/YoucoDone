@@ -13,7 +13,6 @@ class Menu extends Model
         'restaurant_id',
     ];
 
-    // Relations
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);
