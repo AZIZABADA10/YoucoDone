@@ -27,7 +27,6 @@ class PaymentController extends Controller
             'method' => 'required|in:stripe,paypal',
         ]);
 
-        // Simuler le paiement (mode test)
         $payment = Payment::create([
             'reservation_id' => $reservation->id,
             'method' => $validated['method'],
@@ -35,8 +34,7 @@ class PaymentController extends Controller
             'paid_at' => now(),
         ]);
 
-        // Envoyer email de confirmation (à implémenter)
-        // Mail::to($reservation->user)->send(new ReservationConfirmed($reservation));
+
 
         return redirect()->route('reservations.show', $reservation)
             ->with('success', 'Paiement effectué avec succès!');
