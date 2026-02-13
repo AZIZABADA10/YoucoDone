@@ -14,7 +14,7 @@ class Favori extends Model
         'restaurant_id',
     ];
 
-    // Relations
+
     public function user()
     {
         return $this->belongsTo(User::class);
