@@ -13,7 +13,7 @@ class Cuisine extends Model
         'type',
     ];
 
-    // Relations
+
     public function restaurants()
     {
         return $this->hasMany(Restaurant::class);
