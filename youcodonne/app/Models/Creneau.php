@@ -20,7 +20,7 @@ class Creneau extends Model
         'hf' => 'datetime',
     ];
 
-    // Relations
+
     public function horaire()
     {
         return $this->belongsTo(Horaire::class);
