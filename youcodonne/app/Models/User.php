@@ -63,7 +63,6 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-    // Helpers
     public function isAdmin()
     {
         return $this->type === 'admin';
