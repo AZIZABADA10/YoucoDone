@@ -19,17 +19,14 @@ class RestaurantController extends Controller
     {
         $query = Restaurant::with(['cuisine', 'photos', 'user']);
 
-        // Recherche par ville
         if ($request->filled('ville')) {
             $query->parVille($request->ville);
         }
 
-        // Recherche par type de cuisine
         if ($request->filled('cuisine_id')) {
             $query->parCuisine($request->cuisine_id);
         }
 
-        // Recherche par nom
         if ($request->filled('nom')) {
             $query->where('nom', 'like', '%' . $request->nom . '%');
         }
@@ -63,7 +60,6 @@ class RestaurantController extends Controller
 
         $restaurant = Restaurant::create($validated);
 
-        // Gestion des photos
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $path = $photo->store('restaurants', 'public');
@@ -102,7 +98,6 @@ class RestaurantController extends Controller
 
         $restaurant->update($validated);
 
-        // Gestion des nouvelles photos
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $path = $photo->store('restaurants', 'public');
@@ -118,7 +113,6 @@ class RestaurantController extends Controller
     {
         $this->authorize('delete', $restaurant);
 
-        // Supprimer les photos
         foreach ($restaurant->photos as $photo) {
             Storage::disk('public')->delete($photo->image);
         }
