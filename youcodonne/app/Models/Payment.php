@@ -20,7 +20,6 @@ class Payment extends Model
         'paid_at' => 'datetime',
     ];
 
-    // Relations
     public function reservation()
     {
         return $this->belongsTo(Reservation::class);
