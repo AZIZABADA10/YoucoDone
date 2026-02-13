@@ -22,7 +22,7 @@ class Horaire extends Model
         'heure_fermeture' => 'datetime:H:i',
     ];
 
-    // Relations
+
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);
